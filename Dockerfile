@@ -1,4 +1,3 @@
-# DO NOT UPGRADE alpine until https://bugs.alpinelinux.org/issues/7372 is fixed
 FROM openjdk:8u121-jdk-alpine
 
 RUN apk add --no-cache curl tar bash
