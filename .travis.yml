@@ -3,12 +3,16 @@ sudo: required
 services:
   - docker
 
-before_install:
-- docker build -t txdevopx/maven_alpine3.5_jdk8:1.0 .
-- docker run -itd txdevopx/maven_alpine3.5_jdk8:1.0
-
-
-script:
-- docker ps -a
-- docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0 mvn --version
-- docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0  java -version
+jobs:
+  include:
+    - stage: Bake
+      script:
+      - docker build -t txdevopx/maven_alpine3.5_jdk8:1.0 .
+      - docker images
+      
+    - stage: Test
+      script:
+      - docker run -itd txdevopx/maven_alpine3.5_jdk8:1.0
+      - docker ps -a
+      - docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0 mvn --version
+      - docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0  java -version
