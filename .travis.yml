@@ -5,17 +5,14 @@ services:
 
 jobs:
   include:
-    - stage: Bake
+    - stage: bake
       script:
-      - docker build -t maven_alpine3.5_jdk8:1.0 .
+      - docker build -t $DOCKER_USERNAME/maven_alpine3.5_jdk8:1.0 .
       - docker images
-    - stage: Push
-      script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docer tag $DOCKER_USERNAME/maven_alpine3.5_jdk8:1.0
       - docker push $DOCKER_USERNAME/maven_alpine3.5_jdk8:1.0
       
-    - stage: Test
+    - stage: test
       script:
       - docker run -itd txdevops/maven_alpine3.5_jdk8:1.0
       - docker ps -a
