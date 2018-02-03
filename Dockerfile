@@ -1,4 +1,4 @@
-FROM txdevops/hippocms_base:1.0
+FROM txdevops/hippocms_base:1.1
 MAINTAINER Sandipan
 
 #RUN cd /hippocms/myhippoproject/; mvn clean verify
