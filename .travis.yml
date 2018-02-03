@@ -14,5 +14,8 @@ jobs:
       
     - stage: Test
       script:
-      - docker run -itd $DOCKER_USERNAME/hippocms:1.0
+      - docker run -itd -p 8080:8080 --name hippo $DOCKER_USERNAME/hippocms:1.0
       - docker ps -a
+      after_script:
+      - docker stop hippo
+      - docker rm hippo
