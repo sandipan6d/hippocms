@@ -10,6 +10,7 @@ jobs:
       - docker build -t maven_alpine3.5_jdk8:1.0 .
       - docker images
     - stage: Push
+      script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - docer tag $DOCKER_USERNAME/maven_alpine3.5_jdk8:1.0
       - docker push $DOCKER_USERNAME/maven_alpine3.5_jdk8:1.0
