@@ -1,0 +1,14 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+before_install:
+- docker build -t txdevopx/maven_alpine3.5_jdk8:1.0 .
+- docker run -itd txdevopx/maven_alpine3.5_jdk8:1.0
+- docker ps -a
+
+script:
+- bundle exec rake test
