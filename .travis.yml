@@ -11,4 +11,4 @@ before_install:
 script:
 - docker ps -a
 - docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0 mvn --version
-- docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0  java --version
+- docker run --rm -it txdevopx/maven_alpine3.5_jdk8:1.0  java -version
